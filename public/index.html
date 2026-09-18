@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog Translation Lab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">T</div>
+          <div>
+            <strong>Translation Lab</strong>
+            <span>Azure Translator</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Principal">
+          <button class="nav-item is-active" data-view="blog">Blog</button>
+        </nav>
+
+        <div class="provider-panel">
+          <span>Provider</span>
+          <strong id="providerName">...</strong>
+          <small id="providerStatus">Carregando</small>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Blog multilanguage local</p>
+            <h1 id="viewTitle">Blog</h1>
+          </div>
+
+          <div class="locale-control" id="localeControl"></div>
+        </header>
+
+        <section class="view is-visible" id="view-blog">
+          <div class="toolbar">
+            <label class="field compact">
+              <span>Fonte</span>
+              <select id="blogSource">
+                <option value="crud">CRUD</option>
+                <option value="static">Markdown</option>
+              </select>
+            </label>
+            <button class="button ghost" id="refreshBlog">Atualizar</button>
+          </div>
+          <div class="post-list" id="blogPosts"></div>
+        </section>
+
+      </main>
+    </div>
+
+    <button class="fab" id="openComposer" type="button" aria-label="Criar artigo">+</button>
+
+    <div class="modal-backdrop" id="composerModal" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+        <div class="modal-header">
+          <h2 id="composerTitle">Novo artigo</h2>
+          <button class="icon-button" id="closeComposer" type="button" aria-label="Fechar">x</button>
+        </div>
+
+        <form class="editor" id="postForm">
+          <input type="hidden" id="postId" />
+
+          <label class="field">
+            <span>Titulo</span>
+            <input id="title" required placeholder="Ex: Como funciona traducao automatica" />
+          </label>
+
+          <label class="field">
+            <span>Resumo</span>
+            <textarea id="summary" rows="3" placeholder="Resumo curto para a listagem"></textarea>
+          </label>
+
+          <label class="field">
+            <span>Corpo em Markdown</span>
+            <textarea
+              id="body"
+              rows="12"
+              required
+              placeholder="Escreva o artigo aqui..."
+            ></textarea>
+          </label>
+
+          <div class="editor-actions">
+            <button class="button ghost" type="button" id="resetForm">Limpar</button>
+            <button class="button primary" id="submitPost" type="submit">Publicar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
